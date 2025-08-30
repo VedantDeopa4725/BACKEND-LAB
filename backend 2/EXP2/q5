@@ -1,0 +1,11 @@
+const fs = require('fs');
+
+const readableStream = fs.createReadStream('nonexistent.txt', { encoding: 'utf8' });
+
+readableStream.on('data', (chunk) => {
+    console.log(chunk);
+});
+
+readableStream.on('error', (err) => {
+    console.error('Error occurred while reading file:', err.message);
+});
